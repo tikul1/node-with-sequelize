@@ -7,7 +7,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING,
+        underscored: true,
         allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Please enter your name",
+          },
+        },
       },
       country: {
         type: DataTypes.STRING,

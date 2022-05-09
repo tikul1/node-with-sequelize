@@ -1,6 +1,6 @@
 const res = require("express/lib/response");
-const { sequelize } = require("../models");
-const db = require("../models");
+const { sequelize } = require("../config");
+const db = require("../config");
 
 const users = db.users;
 
@@ -16,6 +16,8 @@ const addUser = async (req, res) => {
 
 const allUser = async (req, res) => {
   let user = await users.findAll({
+    // offset: 3,
+    // limit: 2,
     // where: sequelize.where(
     //   sequelize.fn("char_length", sequelize.col("name")),
     //   6

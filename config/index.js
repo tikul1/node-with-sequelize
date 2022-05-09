@@ -1,6 +1,6 @@
-const config = require("../config/config");
+const config = require("./config");
 const { Sequelize, DataTypes } = require("sequelize");
-const { dialect } = require("../config/config");
+const { dialect } = require("./config");
 
 const sequelize = new Sequelize(
   config.database,
@@ -31,6 +31,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.users = require("./usersModel")(sequelize, DataTypes);
+db.users = require("../models/usersModel")(sequelize, DataTypes);
 
 module.exports = db;
