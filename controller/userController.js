@@ -1,5 +1,4 @@
-const res = require("express/lib/response");
-const { sequelize } = require("../config");
+const { sequelize, others } = require("../config");
 const db = require("../config");
 
 const users = db.users;

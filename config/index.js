@@ -9,7 +9,7 @@ const sequelize = new Sequelize(
   {
     host: config.host,
     dialect: config.dialect,
-    operatorsAliases: false,
+    operatorsAliases: 0,
     pool: {
       max: config.pool.max,
       min: config.pool.min,
@@ -30,7 +30,12 @@ sequelize
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+db.sequelize = sequelize;
 
 db.users = require("../models/usersModel")(sequelize, DataTypes);
+db.others = require("../models/otherModel")(sequelize, DataTypes);
+
+db.users.hasOne(db.others);
+db.others.belongsTo(db.users, { as: "user", foreignKey: { name: "user_id" } });
 
 module.exports = db;
